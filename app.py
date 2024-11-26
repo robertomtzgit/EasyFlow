@@ -47,11 +47,17 @@ def send_email(receiver_email, subject, body, attachments):
 # Función para generar documentos de Word
 def generate_word(template_path, excel_data, output_folder):
     doc = DocxTemplate(template_path)
+    nombre = "Roberto Martinez"
+    telefono = "(385) 118 07 43"
+    correo = "roberto.martinez8198@alumnos.udg.mx"
     fecha = datetime.today().strftime("%d/%m/%y")
     generated_files = []
 
     for _, row in excel_data.iterrows():
         context = {
+            'nombre': nombre, 
+            'telefono': telefono, 
+            'correo': correo,
             'nombre_alumno': row['Nombre del Alumno'],
             'nota_mat': row['Mat'],
             'nota_fis': row['Fis'],
@@ -129,7 +135,7 @@ def main():
         
         **Plantilla de Word**:  
         - Debe incluir las siguientes variables en formato Jinja:  
-            - `{{nombre_alumno}}`, `{{nota_mat}}`, `{{nota_fis}}`, `{{nota_qui}}`, y `{{fecha}}."
+            - `{{nombre_alumno}}`, `{{nota_mat}}`, `{{nota_fis}}`, `{{nota_qui}}`, y `{{fecha}}`."
         """
     )
 
